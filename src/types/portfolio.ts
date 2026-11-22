@@ -63,6 +63,16 @@ export interface MetricHighlight {
   label: string;
 }
 
+export interface ProjectMediaItem {
+  id: string;
+  type: 'video' | 'image';
+  src: string;
+  poster?: string;
+  label: string;
+  caption: string;
+  alt: string;
+}
+
 export interface ProjectItem {
   id: string;
   slug: string;
@@ -76,6 +86,7 @@ export interface ProjectItem {
   scenePreset: ScenePreset;
   sceneLabel: string;
   oneLiner: string;
+  media: readonly ProjectMediaItem[];
   aboutParagraphs: readonly string[];
   howItWorks: readonly ProjectSubsection[];
   outcomes: readonly string[];

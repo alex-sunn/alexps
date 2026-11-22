@@ -78,6 +78,33 @@ export const RESUME_DATA: PortfolioData = {
       sceneLabel: 'Interactive 3D Lattice // 15-Agent Front, Middle & Back-Office Swarm',
       oneLiner:
         'A 15-agent investment platform that splits equity research, portfolio sizing, risk checks, and trade approvals across separate AI desks.',
+      media: [
+        {
+          id: 'pixel-walkthrough',
+          type: 'video',
+          src: '/media/pixel-agents/walkthrough.webm',
+          poster: '/media/pixel-agents/office-overview.png',
+          label: 'Walkthrough',
+          caption: 'Live 2D trading floor simulation moving across Research Lab, Risk Desk, Ideas, Board, Portfolio, and Trade Execution panels.',
+          alt: 'Video walkthrough of Pixel Agents trading floor and command terminal',
+        },
+        {
+          id: 'pixel-office',
+          type: 'image',
+          src: '/media/pixel-agents/office-overview.png',
+          label: 'Trading Floor',
+          caption: 'Multi-room pixel office showing specialized AI analysts collaborating alongside the MD Gate approval queue.',
+          alt: 'Pixel Agents multi-room trading floor and MD Gate terminal screenshot',
+        },
+        {
+          id: 'pixel-committee',
+          type: 'image',
+          src: '/media/pixel-agents/agent-committee.png',
+          label: 'Macro & Ideas',
+          caption: 'Live FRED macro regime steering panel paired with conviction-scored equity trade recommendations.',
+          alt: 'Pixel Agents macro regime and trade ideas terminal screenshot',
+        },
+      ],
       aboutParagraphs: [
         'Instead of asking one big prompt to do everything, Pixel Agents models how an actual investment firm separates work across Front, Middle, and Back-Office teams. Fifteen specialized agents cover equity research, quantitative weighting, trading execution, and compliance gates before any order moves forward.',
         'Every persona, including research analysts, quants, traders, and the portfolio manager, pulls context from a shared vector store of SEC filings and investment notes, then streams trade proposals into a live React terminal.',
@@ -130,6 +157,41 @@ export const RESUME_DATA: PortfolioData = {
       sceneLabel: 'Interactive 3D Core // Autonomous Commercial Real Estate Qualification',
       oneLiner:
         'A real estate CRM and lead qualification tool that turns messy inbound inquiries into scored, ready-to-book deals in seconds.',
+      media: [
+        {
+          id: 'dealflow-walkthrough',
+          type: 'video',
+          src: '/media/dealflow-ai/walkthrough.webm',
+          poster: '/media/dealflow-ai/dashboard.png',
+          label: 'Walkthrough',
+          caption: 'End-to-end tour across the DealFlow CRM overview, 6-stage Kanban pipeline, and Recharts conversion analytics.',
+          alt: 'Video walkthrough of DealFlow AI CRM dashboard, Kanban pipeline, and analytics',
+        },
+        {
+          id: 'dealflow-dashboard',
+          type: 'image',
+          src: '/media/dealflow-ai/dashboard.png',
+          label: 'CRM Overview',
+          caption: 'Lead triage inbox showing parsed deal budgets, property intent, hot lead flags, and qualification status.',
+          alt: 'DealFlow AI CRM overview dashboard with scored commercial real estate leads',
+        },
+        {
+          id: 'dealflow-pipeline',
+          type: 'image',
+          src: '/media/dealflow-ai/pipeline.png',
+          label: 'Kanban Board',
+          caption: 'Automated AI qualification columns advancing inbound leads from initial contact to booked property tours.',
+          alt: 'DealFlow AI drag-and-drop deal pipeline Kanban board',
+        },
+        {
+          id: 'dealflow-analytics',
+          type: 'image',
+          src: '/media/dealflow-ai/analytics.png',
+          label: 'Analytics',
+          caption: 'Pipeline conversion funnel, lead volume over time, and projected brokerage commission volume.',
+          alt: 'DealFlow AI pipeline analytics and conversion charts',
+        },
+      ],
       aboutParagraphs: [
         'I built DealFlow AI after talking with commercial real estate brokers and seeing how often good leads got lost in messy email threads and spreadsheets. The goal was an interface simple enough that non-technical brokers could skip manual CRM data entry altogether.',
         'Under the hood, a Next.js 16 and PostgreSQL web app pairs with a Playwright lead-discovery pipeline to parse incoming texts and emails, score deal quality, and route conversations to the right broker.',
@@ -182,6 +244,41 @@ export const RESUME_DATA: PortfolioData = {
       sceneLabel: 'Interactive 3D Spire // 9-Module Quantitative & Valuation Workstation',
       oneLiner:
         'A 9-tab Python workstation combining market benchmarks, FRED macro data, technical charts, and auto-filled DCF Excel models.',
+      media: [
+        {
+          id: 'dcf-walkthrough',
+          type: 'video',
+          src: '/media/dcf-terminal/walkthrough.webm',
+          poster: '/media/dcf-terminal/technicals.png',
+          label: 'Walkthrough',
+          caption: 'Guided tour across Market Dashboard benchmarks, candlestick technical overlays, and the auto-filled DCF valuation builder.',
+          alt: 'Video walkthrough of Financial Terminal and DCF Suite across tabs',
+        },
+        {
+          id: 'dcf-technicals',
+          type: 'image',
+          src: '/media/dcf-terminal/technicals.png',
+          label: 'Technicals',
+          caption: 'Interactive Plotly candlestick chart with SMA 20/50 crossovers, Bollinger Bands, and toggleable momentum indicators.',
+          alt: 'Financial Terminal technical analysis candlestick and Bollinger Bands chart',
+        },
+        {
+          id: 'dcf-builder',
+          type: 'image',
+          src: '/media/dcf-terminal/dcf-builder.png',
+          label: 'DCF Output',
+          caption: 'Granular DCF model computing implied per-share value, FCF projections, and Excel workbook exports from historical financials.',
+          alt: 'Financial Terminal granular DCF valuation output and free cash flow model',
+        },
+        {
+          id: 'dcf-markets',
+          type: 'image',
+          src: '/media/dcf-terminal/market-dashboard.png',
+          label: 'Markets',
+          caption: 'Cross-asset normalized performance tracker comparing equities, gold, futures, and crypto benchmarks.',
+          alt: 'Financial Terminal global market dashboard normalized performance view',
+        },
+      ],
       aboutParagraphs: [
         'I wanted one local workspace for fundamental and technical research instead of rebuilding Excel templates from scratch for every ticker. This Streamlit suite pulls market prices, macroeconomic series, financial statements, and peer multiples into a single interface.',
         'When a company looks interesting, you can go straight from its financials and peer comps into an auto-filled DCF model and export the finished valuation workbook to Excel.',
@@ -223,6 +320,33 @@ export const RESUME_DATA: PortfolioData = {
       sceneLabel: 'Interactive 3D Beacon // 7-Channel Off-Market Acquisition Radar',
       oneLiner:
         'An off-market property sourcing console combining 7 regional listing scrapers with live terminal logs over Server-Sent Events.',
+      media: [
+        {
+          id: 'wholesaling-walkthrough',
+          type: 'video',
+          src: '/media/wholesaling-radar/walkthrough.webm',
+          poster: '/media/wholesaling-radar/dashboard.png',
+          label: 'Walkthrough',
+          caption: 'Sourcing workflow tour across the cross-border pipeline, cash buyer matching directory, and AI underwriting modal.',
+          alt: 'Video walkthrough of Wholesaling Automation Radar console',
+        },
+        {
+          id: 'wholesaling-dashboard',
+          type: 'image',
+          src: '/media/wholesaling-radar/dashboard.png',
+          label: 'Pipeline Console',
+          caption: 'Multi-region ingestion pipeline calculating ARV, estimated rehab cost, Maximum Allowable Offer, and deal score per property.',
+          alt: 'Wholesaling Automation Radar seller pipeline dashboard screenshot',
+        },
+        {
+          id: 'wholesaling-report',
+          type: 'image',
+          src: '/media/wholesaling-radar/underwriting-report.png',
+          label: 'Underwriting AI',
+          caption: 'Generated comparative underwriting report breaking down rehab tiers, MAO math, rental fallback yield, and offer strategy.',
+          alt: 'Wholesaling Automation Radar AI underwriting and valuation report modal',
+        },
+      ],
       aboutParagraphs: [
         'Finding off-market residential deals usually means checking half a dozen fragmented classifieds, FSBO boards, and foreclosure pages every morning. I built this Express and Puppeteer tool to pull all seven channels into one dashboard.',
         'Each scraper runs with persistent browser profiles and streams live progress logs straight to the UI over Server-Sent Events so you can watch every region finish in real time.',

@@ -72,6 +72,19 @@ describe('Alex Sun Portfolio App (Overview Landing, Quick-Jump & Deep Links)', (
     );
     expect(screen.queryByText(/workspace\//i)).not.toBeInTheDocument();
 
+    // Project media gallery starts with video walkthrough, steps to screenshot, and opens zoom lightbox
+    const gallery = screen.getByRole('figure', { name: /DealFlow AI walkthrough and screenshots/i });
+    expect(gallery.querySelector('video')).toBeInTheDocument();
+    await user.click(within(gallery).getByRole('button', { name: /Next media/i }));
+    await user.click(within(gallery).getByRole('button', { name: /Inspect CRM Overview full screen/i }));
+
+    const lightbox = screen.getByRole('dialog', { name: /DealFlow AI media viewer/i });
+    expect(lightbox).toBeInTheDocument();
+    await user.keyboard('{ArrowRight}');
+    expect(screen.getByRole('heading', { level: 1, name: /^DealFlow AI$/i })).toBeInTheDocument();
+    await user.keyboard('{Escape}');
+    expect(screen.queryByRole('dialog', { name: /DealFlow AI media viewer/i })).not.toBeInTheDocument();
+
     // Pager steps to Financial Terminal & DCF Suite
     await user.click(screen.getByRole('button', { name: /Next project/i }));
     expect(

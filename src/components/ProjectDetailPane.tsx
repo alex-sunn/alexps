@@ -1,4 +1,5 @@
 import { ExternalLink, Lock } from 'lucide-react';
+import { ProjectMediaGallery } from './ProjectMediaGallery';
 import type { NavSectionId, ProjectItem } from '../types/portfolio';
 
 interface ProjectDetailPaneProps {
@@ -108,6 +109,12 @@ export function ProjectDetailPane({
           </button>
         </div>
       </div>
+
+      <ProjectMediaGallery
+        key={project.slug}
+        media={project.media}
+        projectTitle={project.title}
+      />
 
       <div className="metrics-strip">
         {project.metrics.map((metric) => (

@@ -17,7 +17,7 @@ describe('RESUME_DATA curated integrity', () => {
     expect(RESUME_DATA.proofStats).toHaveLength(4);
   });
 
-  it('includes exactly the 4 most impressive curated projects with visibility and structured howItWorks', () => {
+  it('includes exactly the 4 most impressive curated projects with structured walkthrough media', () => {
     expect(RESUME_DATA.projects).toHaveLength(4);
     expect(RESUME_DATA.projects.map((p) => p.slug)).toEqual([
       'pixel-agents',
@@ -26,11 +26,35 @@ describe('RESUME_DATA curated integrity', () => {
       'wholesaling-radar',
     ]);
 
+    const seenIds = new Set<string>();
+
     for (const project of RESUME_DATA.projects) {
       expect(project.visibility).toBe('private');
       expect(project.aboutParagraphs.length).toBeGreaterThanOrEqual(2);
       expect(project.howItWorks.length).toBeGreaterThanOrEqual(3);
       expect(project.stack.length).toBeGreaterThanOrEqual(5);
+
+      expect(project.media.length).toBeGreaterThanOrEqual(3);
+      const videos = project.media.filter((m) => m.type === 'video');
+      const images = project.media.filter((m) => m.type === 'image');
+      expect(videos.length).toBeGreaterThanOrEqual(1);
+      expect(images.length).toBeGreaterThanOrEqual(2);
+      expect(videos[0].src.endsWith('.webm')).toBe(true);
+      expect(videos[0].poster?.endsWith('.png')).toBe(true);
+
+      for (const item of project.media) {
+        expect(seenIds.has(item.id)).toBe(false);
+        seenIds.add(item.id);
+        expect(item.src.startsWith(`/media/${project.slug}/`)).toBe(true);
+        expect(item.label.length).toBeGreaterThan(2);
+        expect(item.caption.length).toBeGreaterThan(15);
+        expect(item.alt.length).toBeGreaterThan(10);
+        expect(item.caption).not.toContain('\u2014');
+
+        if (item.poster) {
+          expect(item.poster.startsWith(`/media/${project.slug}/`)).toBe(true);
+        }
+      }
     }
   });
 
