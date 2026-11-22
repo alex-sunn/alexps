@@ -18,8 +18,8 @@ export const RESUME_DATA: PortfolioData = {
     photoUrl: '/alex-sun.jpg',
     photoAlt: 'Alex Sun with his dog in Toronto',
     aboutParagraphs: [
-      'Economics & Management Science student at Toronto Metropolitan University (4.1/4.33 CGPA, TRSM Top 10%) combining institutional finance experience with full-stack AI engineering.',
-      'Across internships at QuadReal Property Group, Impressions Group, and IGM Financial, I have underwritten $1.3MM in recurring revenue initiatives across $1.9Bn of lease-up real estate assets, cut equity research KPI reporting time by 70%, and supported enterprise AI infrastructure delivery—while building 15-agent investment desks and autonomous real estate CRMs.',
+      'I study Economics & Management Science at Toronto Metropolitan University (4.1/4.33 CGPA, TRSM Top 10%) and enjoy building practical software at the intersection of finance, real estate, and AI.',
+      'Across internships at QuadReal Property Group, Impressions Group, and IGM Financial, I helped underwrite a $1.3MM ARR parking strategy across $1.9Bn of lease-up real estate, automated equity research dashboards that cut weekly KPI reporting time by 70%, and supported enterprise AI delivery. Outside of work, I build tools like multi-agent investment desks and commercial real estate CRMs.',
     ],
   },
 
@@ -77,29 +77,29 @@ export const RESUME_DATA: PortfolioData = {
       scenePreset: 'agent-lattice',
       sceneLabel: 'Interactive 3D Lattice // 15-Agent Front, Middle & Back-Office Swarm',
       oneLiner:
-        'An event-driven 15-agent investment desk automating equity research, quant portfolio optimization, and compliance execution.',
+        'A 15-agent investment platform that splits equity research, portfolio sizing, risk checks, and trade approvals across separate AI desks.',
       aboutParagraphs: [
-        'Pixel Agents models an institutional asset manager as an autonomous multi-agent swarm. Rather than relying on a single monolithic prompt, 15 specialized personas collaborate across Front, Middle, and Back-Office desks to analyze filings, construct factor weights, validate risk limits, and propose executable trades.',
-        'Each agent persona—from equity research analysts and quant researchers to trading desk leads and portfolio managers—reads from a shared Vector RAG memory layer and streams structured approvals into a Bloomberg Terminal-style React workstation.',
+        'Instead of asking one big prompt to do everything, Pixel Agents models how an actual investment firm separates work across Front, Middle, and Back-Office teams. Fifteen specialized agents cover equity research, quantitative weighting, trading execution, and compliance gates before any order moves forward.',
+        'Every persona, including research analysts, quants, traders, and the portfolio manager, pulls context from a shared vector store of SEC filings and investment notes, then streams trade proposals into a live React terminal.',
       ],
       howItWorks: [
         {
-          heading: 'Multi-Agent Desk Orchestration',
-          body: 'An event-driven FastAPI and WebSocket message bus routes research memos, quant factor optimizations, and compliance gates across 15 specialized Gemini 2.5 agent personas with human-in-the-loop sign-off.',
+          heading: 'Multi-Agent Desk Setup',
+          body: 'A FastAPI and WebSocket backend passes research memos, portfolio weights, and risk checks between 15 Gemini 2.5 agent personas while keeping a human sign-off step before execution.',
         },
         {
-          heading: 'Vector RAG & Live Context Relay',
-          body: 'A vector retrieval pipeline indexes SEC filings, market sentiment, and investment theses directly into agent runtimes so every portfolio decision is grounded in verifiable company fundamentals.',
+          heading: 'Vector RAG Context',
+          body: 'A vector index stores SEC filings, market sentiment, and thesis notes so agents cite real company fundamentals instead of guessing from memory.',
         },
         {
-          heading: 'Bloomberg-Style Execution Terminal',
-          body: 'Custom tool adapters generate DCF models, Excel workbooks, and PowerPoint briefs alongside automated ledger accounting, real-time portfolio rebalancing, and custodian broker reconciliations.',
+          heading: 'Terminal & Analyst Tools',
+          body: 'Custom tool adapters build DCF sheets, Excel workbooks, and PowerPoint summaries alongside automated ledger tracking, rebalancing views, and broker reconciliations.',
         },
       ],
       outcomes: [
         'Coordinated 15 specialized AI agents across Front, Middle, and Back-Office investment workflows.',
-        'Engineered real-time WebSocket message relay and Vector RAG memory indexing SEC filings and theses.',
-        'Integrated dedicated DCF, Excel, PowerPoint, and deep-research tool adapters into a live React dashboard.',
+        'Built a WebSocket relay and Vector RAG pipeline indexing SEC filings and investment theses.',
+        'Added tool integrations for DCF sheets, Excel exports, PowerPoint decks, and live trade tracking.',
       ],
       metrics: [
         { value: '15 Agents', label: 'Multi-Desk Swarm' },
@@ -129,33 +129,33 @@ export const RESUME_DATA: PortfolioData = {
       scenePreset: 'capital-core',
       sceneLabel: 'Interactive 3D Core // Autonomous Commercial Real Estate Qualification',
       oneLiner:
-        'A multi-tenant commercial real estate CRM and autonomous lead qualification platform cutting deal triage from hours to seconds.',
+        'A real estate CRM and lead qualification tool that turns messy inbound inquiries into scored, ready-to-book deals in seconds.',
       aboutParagraphs: [
-        'Built after interviewing commercial real estate brokers to pinpoint why leads slipped through manual spreadsheets, DealFlow AI eliminates manual CRM data entry for non-technical deal teams.',
-        'It pairs a multi-tenant Next.js 16 and PostgreSQL SaaS platform with an autonomous Playwright discovery and outreach pipeline, turning unstructured emails and texts into scored, tour-ready brokerage deals.',
+        'I built DealFlow AI after talking with commercial real estate brokers and seeing how often good leads got lost in messy email threads and spreadsheets. The goal was an interface simple enough that non-technical brokers could skip manual CRM data entry altogether.',
+        'Under the hood, a Next.js 16 and PostgreSQL web app pairs with a Playwright lead-discovery pipeline to parse incoming texts and emails, score deal quality, and route conversations to the right broker.',
       ],
       howItWorks: [
         {
           heading: '95%+ Structured JSON Extraction',
-          body: 'Google Gemini 2.0 Flash parses unstructured real estate inquiries into typed JSON budgets, timelines, and property criteria, cutting manual deal triage from hours to seconds.',
+          body: 'Gemini 2.0 Flash reads unstructured buyer and tenant inquiries and extracts budgets, timelines, and property criteria into typed JSON, cutting deal triage from hours to seconds.',
         },
         {
           heading: 'Twilio Smart Proxy SMS Routing',
-          body: 'A single brokerage Twilio number smart-routes incoming lead SMS messages straight to the assigned realtor cell phone while maintaining clean brokerage-level conversation threads.',
+          body: 'A shared brokerage Twilio number forwards lead texts straight to the assigned realtor phone while keeping clean conversation history inside the CRM.',
         },
         {
-          heading: 'Bi-Directional Calendar & 0–100 Deal Scoring',
-          body: 'PostgreSQL + Prisma rank every inquiry on a 0–100 scale, feed realtor leaderboards tracking response speed and pipeline value, and book property tours via Google Calendar OAuth 2.0.',
+          heading: 'Calendar Booking & 0-100 Deal Scoring',
+          body: 'PostgreSQL and Prisma score each lead from 0 to 100, track broker response speeds on a leaderboard, and book tours directly through Google Calendar OAuth 2.0.',
         },
       ],
       outcomes: [
-        'Achieved 95%+ structured extraction accuracy using Gemini 2.0 Flash on messy brokerage inquiries.',
-        'Built a Next.js 16 Kanban pipeline, realtor leaderboard, and PostgreSQL/Prisma scoring dashboard.',
-        'Paired with a standalone Playwright GTA lead-gen and automated outreach scheduler.',
+        'Reached 95%+ structured extraction accuracy with Gemini 2.0 Flash on real brokerage inquiries.',
+        'Built a Next.js 16 Kanban board, broker leaderboard, and PostgreSQL/Prisma pipeline analytics view.',
+        'Connected a standalone Playwright GTA lead-gen and automated outreach scheduler.',
       ],
       metrics: [
         { value: '95%+ Acc', label: 'JSON Qualification' },
-        { value: '0–100', label: 'Deal Scoring Engine' },
+        { value: '0-100', label: 'Deal Scoring Engine' },
         { value: 'Seconds', label: 'Triage Latency' },
       ],
       stack: [
@@ -181,28 +181,28 @@ export const RESUME_DATA: PortfolioData = {
       scenePreset: 'skyline-spire',
       sceneLabel: 'Interactive 3D Spire // 9-Module Quantitative & Valuation Workstation',
       oneLiner:
-        'A 9-module quantitative workstation combining live market data, FRED macro telemetry, risk matrices, and auto-filled DCF Excel export.',
+        'A 9-tab Python workstation combining market benchmarks, FRED macro data, technical charts, and auto-filled DCF Excel models.',
       aboutParagraphs: [
-        'Designed as an all-in-one Python financial analysis terminal, this suite unifies macroeconomic monitoring, equity screening, technical overlays, and institutional discounted cash flow modeling in a single local workspace.',
-        'Instead of stitching together ad-hoc spreadsheets for every company screen, analysts pull historical financials, peer multiples, and macro yields directly into pre-built DCF assumptions.',
+        'I wanted one local workspace for fundamental and technical research instead of rebuilding Excel templates from scratch for every ticker. This Streamlit suite pulls market prices, macroeconomic series, financial statements, and peer multiples into a single interface.',
+        'When a company looks interesting, you can go straight from its financials and peer comps into an auto-filled DCF model and export the finished valuation workbook to Excel.',
       ],
       howItWorks: [
         {
-          heading: 'Auto-Filled DCF & Formatted Excel Export',
-          body: 'Pulls income statement, balance sheet, and cash flow histories via yfinance to pre-populate WACC, revenue growth, and terminal value sensitivity tables with one-click Excel workbook export.',
+          heading: 'Auto-Filled DCF & Excel Export',
+          body: 'Pulls income statements, balance sheets, and cash flow statements from yfinance to fill in WACC, growth assumptions, and sensitivity tables with one-click Excel export.',
         },
         {
-          heading: 'Macro Economy & Peer Comparables',
-          body: 'Tracks FRED macroeconomic indicators (GDP, CPI, Treasury yields), economic calendar events, aggregated financial news, and side-by-side valuation multiples across peer tickers.',
+          heading: 'Macro Economy & Peer Comps',
+          body: 'Tracks FRED macro indicators (GDP, CPI, Treasury yields), an economic calendar, financial news feeds, and side-by-side multiples across peer companies.',
         },
         {
-          heading: 'Technical & Correlation Risk Telemetry',
-          body: 'Computes SMA, RSI, Bollinger Bands, MACD, ATR, and OBV indicators alongside multi-asset correlation matrices and annualized volatility metrics.',
+          heading: 'Technical & Volatility Metrics',
+          body: 'Calculates SMA, RSI, Bollinger Bands, MACD, ATR, and OBV overlays along with correlation matrices and annualized volatility for risk sizing.',
         },
       ],
       outcomes: [
-        'Delivered 9 integrated views covering Market Dashboard, Macro Economy, News, Technicals, Fundamentals, Peers, Risk, and DCF Builder.',
-        'Automated historical statement ingestion and WACC/terminal-value sensitivity exports to Excel.',
+        'Shipped 9 modules covering markets, macro data, news, technicals, fundamentals, peer comps, risk, and DCF modeling.',
+        'Automated financial statement ingestion and formatted DCF sensitivity exports to Excel.',
       ],
       metrics: [
         { value: '9 Modules', label: 'Integrated Views' },
@@ -222,28 +222,28 @@ export const RESUME_DATA: PortfolioData = {
       scenePreset: 'apex-beacon',
       sceneLabel: 'Interactive 3D Beacon // 7-Channel Off-Market Acquisition Radar',
       oneLiner:
-        'A real-time off-market real estate acquisition console aggregating 7 regional listing & foreclosure scrapers via live SSE logs.',
+        'An off-market property sourcing console combining 7 regional listing scrapers with live terminal logs over Server-Sent Events.',
       aboutParagraphs: [
-        'Off-market residential acquisition depends on spotting distressed, FSBO, and foreclosure listings before they hit broad syndication. Wholesaling Automation Radar consolidates seven fragmented listing sources into one live operator dashboard.',
-        'An Express server coordinates headless scrapers with persistent browser profiles and streams live execution telemetry to the browser over Server-Sent Events (SSE).',
+        'Finding off-market residential deals usually means checking half a dozen fragmented classifieds, FSBO boards, and foreclosure pages every morning. I built this Express and Puppeteer tool to pull all seven channels into one dashboard.',
+        'Each scraper runs with persistent browser profiles and streams live progress logs straight to the UI over Server-Sent Events so you can watch every region finish in real time.',
       ],
       howItWorks: [
         {
-          heading: '7-Channel Headless Discovery',
-          body: 'Dedicated Puppeteer and Cheerio scrapers monitor Zillow FSBO, FSBO Canada, Kijiji, Craigslist, Foreclosures, Marketplace, and Cash Buyers across configured geographic regions.',
+          heading: '7-Channel Scraper Pipeline',
+          body: 'Dedicated Puppeteer and Cheerio workers scan Zillow FSBO, FSBO Canada, Kijiji, Craigslist, Foreclosures, Marketplace, and Cash Buyers across configured regions.',
         },
         {
-          heading: 'Real-Time SSE Terminal Stream',
-          body: 'The Express backend broadcasts live scraping state, regional progress, and newly captured leads via Server-Sent Events directly into a browser terminal log.',
+          heading: 'Live SSE Log Stream',
+          body: 'The Express server pushes scraper progress, region counts, and newly discovered leads straight into an in-browser terminal feed using Server-Sent Events.',
         },
         {
-          heading: 'Persistent Session & Deduplicated Storage',
-          body: 'Maintains persistent Puppeteer browser profiles across runs and writes normalized property leads cleanly into structured JSON storage for rapid underwriting.',
+          heading: 'Session Persistence & Lead Storage',
+          body: 'Keeps persistent Puppeteer browser sessions across runs and writes deduplicated property records into JSON storage for fast underwriting.',
         },
       ],
       outcomes: [
-        'Unified 7 distinct property and cash-buyer scrapers behind one full-stack Express control panel.',
-        'Built zero-polling Server-Sent Events (SSE) live terminal logging for transparent run diagnostics.',
+        'Combined 7 property and cash-buyer scrapers behind one Express control console.',
+        'Replaced polling with live Server-Sent Events (SSE) logs for real-time run visibility.',
       ],
       metrics: [
         { value: '7 Channels', label: 'Parallel Scrapers' },
@@ -264,7 +264,7 @@ export const RESUME_DATA: PortfolioData = {
       scenePreset: 'agent-lattice',
       sceneLabel: 'Enterprise AI Infrastructure & Strategic Delivery',
       summary:
-        'Supporting enterprise AI infrastructure initiatives across technology, cybersecurity, and executive financial reporting.',
+        'Supporting enterprise AI infrastructure projects across technology, cybersecurity, and financial reporting teams.',
       metrics: [
         { value: 'AI Infra', label: 'Enterprise Scope' },
         { value: 'RAID Logs', label: 'Delivery Governance' },
@@ -293,7 +293,7 @@ export const RESUME_DATA: PortfolioData = {
       scenePreset: 'skyline-spire',
       sceneLabel: '$1.9Bn Lease-Up Portfolio & $1.3MM ARR Strategy',
       summary:
-        'Underwrote revenue monetization and automated national portfolio asset management across $1.9Bn of lease-up developments.',
+        'Underwrote revenue monetization and automated portfolio reporting across $1.9Bn of lease-up real estate developments.',
       metrics: [
         { value: '$1.9Bn', label: 'Assets Supported' },
         { value: '$1.3MM', label: 'Projected ARR' },
@@ -322,7 +322,7 @@ export const RESUME_DATA: PortfolioData = {
       scenePreset: 'capital-core',
       sceneLabel: 'Equity Research, DCF Valuation & Automated KPI Reporting',
       summary:
-        'Built multi-sector DCF valuation models, automated real-time earnings trackers, and cut weekly KPI reporting time by 70%.',
+        'Built multi-sector DCF valuation models, live earnings trackers, and automated KPI dashboards that cut manual reporting by 70%.',
       metrics: [
         { value: '-70%', label: 'Reporting Time' },
         { value: 'DCF + Comps', label: 'Multi-Sector' },
@@ -400,7 +400,7 @@ export const RESUME_DATA: PortfolioData = {
       period: '2024 – Present',
       badge: '4.1 / 4.33 CGPA',
       description:
-        'Ranked in the top 10% of Ted Rogers School of Management students and awarded the TMU Academic Achievement Scholarship in Economics & Management Science.',
+        'Ranked in the top 10% of Ted Rogers School of Management students and awarded the TMU Academic Achievement Scholarship.',
     },
     {
       id: 'awd-toastmasters',
@@ -409,7 +409,7 @@ export const RESUME_DATA: PortfolioData = {
       period: '2024',
       badge: 'FINALIST',
       description:
-        'Advanced to the university finals delivering persuasive executive speeches and impromptu analytical arguments under live timing.',
+        'Reached the university finals delivering prepared and impromptu speeches under live timing.',
     },
     {
       id: 'awd-speaking',
@@ -418,7 +418,7 @@ export const RESUME_DATA: PortfolioData = {
       period: '2019 – 2023',
       badge: 'PROVINCIAL WINNER',
       description:
-        'Multi-year provincial winner recognized for clarity of structure, persuasive delivery, and composure under questioning.',
+        'Multi-year provincial winner in competitive public speaking and Q&A.',
     },
     {
       id: 'awd-deca',
@@ -427,16 +427,16 @@ export const RESUME_DATA: PortfolioData = {
       period: '2019 – 2022',
       badge: 'ICDC QUALIFIER',
       description:
-        'Competed at provincial and international levels solving time-constrained finance and business strategy case studies.',
+        'Competed at provincial and international levels solving timed finance and business strategy case studies.',
     },
     {
       id: 'awd-tennis',
-      title: 'Competitive Tennis — Former Provincialist',
+      title: 'Competitive Tennis (Former Provincialist)',
       organization: 'Ontario Competitive Circuit',
       period: 'Competitive Career',
       badge: 'PROVINCIALIST',
       description:
-        'Former provincial-level tennis competitor bringing sustained match focus and disciplined preparation to investing and software engineering.',
+        'Competed at the provincial level in junior tennis across Ontario.',
     },
   ],
 

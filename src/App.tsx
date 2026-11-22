@@ -223,7 +223,7 @@ export function App() {
       <AsciiSceneCanvas activePreset={activeScenePreset} theme={theme} />
 
       <div className="print-only-header">
-        <strong>{RESUME_DATA.identity.name}</strong> — {RESUME_DATA.identity.email} ·{' '}
+        <strong>{RESUME_DATA.identity.name}</strong> | {RESUME_DATA.identity.email} ·{' '}
         {RESUME_DATA.identity.phone} · {RESUME_DATA.identity.linkedinLabel} ·{' '}
         {RESUME_DATA.identity.location}
       </div>

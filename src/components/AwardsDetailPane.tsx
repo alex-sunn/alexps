@@ -32,7 +32,7 @@ export function AwardsDetailPane({
         Awards &amp; Trajectory
       </h1>
       <p className="detail-lead">
-        Academic distinctions, public speaking championships, case competitions, and progression across finance and AI engineering.
+        Academic honors, speaking contests, case competitions, and key milestones from the past few years.
       </p>
 
       <InteractiveChart

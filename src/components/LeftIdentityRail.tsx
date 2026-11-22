@@ -42,7 +42,7 @@ export function LeftIdentityRail({
           type="button"
           className="site-title-btn"
           onClick={() => onSelectSection('overview')}
-          aria-label="Alex Sun — return to overview"
+          aria-label="Alex Sun, return to overview"
         >
           {identity.name}
         </button>
