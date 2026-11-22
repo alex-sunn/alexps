@@ -81,15 +81,19 @@ describe('Alex Sun Portfolio App (Overview Landing, Quick-Jump & Deep Links)', (
     ).not.toBeInTheDocument();
     expect(within(browseProjectsRail).queryByText(/Finance & Quant/i)).not.toBeInTheDocument();
 
-    // Project media gallery starts with video walkthrough, steps to screenshot, and opens zoom lightbox
+    // Project media gallery starts with seamless looping inline video, expands to lightbox with controls, and cycles with arrows
     const gallery = screen.getByRole('figure', { name: /DealFlow AI walkthrough and screenshots/i });
-    expect(gallery.querySelector('video')).toBeInTheDocument();
-    await user.click(within(gallery).getByRole('button', { name: /Next media/i }));
-    await user.click(within(gallery).getByRole('button', { name: /Inspect CRM Overview full screen/i }));
+    const inlineVideo = gallery.querySelector('video');
+    expect(inlineVideo).toBeInTheDocument();
+    expect(inlineVideo).not.toHaveAttribute('controls');
 
+    await user.click(within(gallery).getByRole('button', { name: /Inspect Motion Demo full screen/i }));
     const lightbox = screen.getByRole('dialog', { name: /DealFlow AI media viewer/i });
     expect(lightbox).toBeInTheDocument();
+    expect(lightbox.querySelector('video')).toHaveAttribute('controls');
+
     await user.keyboard('{ArrowRight}');
+    expect(within(lightbox).getByText(/DealFlow AI \/ CRM Overview/i)).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 1, name: /^DealFlow AI$/i })).toBeInTheDocument();
     await user.keyboard('{Escape}');
     expect(screen.queryByRole('dialog', { name: /DealFlow AI media viewer/i })).not.toBeInTheDocument();

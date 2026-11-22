@@ -17,31 +17,41 @@ function cycleIndex(current: number, total: number, delta: -1 | 1): number {
   return (current + delta + total) % total;
 }
 
-function findNextImageIndex(
-  media: readonly ProjectMediaItem[],
-  fromIndex: number,
-  delta: -1 | 1,
-): number {
-  if (media.length === 0) return fromIndex;
-  for (let step = 1; step <= media.length; step += 1) {
-    const candidate = (fromIndex + delta * step + media.length * 2) % media.length;
-    if (media[candidate].type === 'image') {
-      return candidate;
-    }
+function getPrefersReducedMotion(): boolean {
+  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+    return false;
   }
-  return fromIndex;
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
 export function ProjectMediaGallery({ media, projectTitle }: ProjectMediaGalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(getPrefersReducedMotion);
 
   const safeIndex = activeIndex < media.length ? activeIndex : 0;
   const activeItem = media[safeIndex];
-  const imageCount = media.filter((item) => item.type === 'image').length;
 
   useEffect(() => {
-    if (!isLightboxOpen || !activeItem || activeItem.type !== 'image') {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+      return undefined;
+    }
+
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handleChange = () => setPrefersReducedMotion(mediaQuery.matches);
+    handleChange();
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    }
+
+    mediaQuery.addListener(handleChange);
+    return () => mediaQuery.removeListener(handleChange);
+  }, []);
+
+  useEffect(() => {
+    if (!isLightboxOpen || !activeItem) {
       return undefined;
     }
 
@@ -56,20 +66,20 @@ export function ProjectMediaGallery({ media, projectTitle }: ProjectMediaGallery
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
         event.stopImmediatePropagation();
-        setActiveIndex((prev) => findNextImageIndex(media, prev, -1));
+        setActiveIndex((prev) => cycleIndex(prev, media.length, -1));
         return;
       }
 
       if (event.key === 'ArrowRight') {
         event.preventDefault();
         event.stopImmediatePropagation();
-        setActiveIndex((prev) => findNextImageIndex(media, prev, 1));
+        setActiveIndex((prev) => cycleIndex(prev, media.length, 1));
       }
     };
 
     window.addEventListener('keydown', handleCaptureKeyDown, true);
     return () => window.removeEventListener('keydown', handleCaptureKeyDown, true);
-  }, [activeItem, isLightboxOpen, media]);
+  }, [activeItem, isLightboxOpen, media.length]);
 
   if (!activeItem) {
     return null;
@@ -79,12 +89,9 @@ export function ProjectMediaGallery({ media, projectTitle }: ProjectMediaGallery
     setActiveIndex((prev) => cycleIndex(prev, media.length, delta));
   };
 
-  const stepLightboxImage = (delta: -1 | 1) => {
-    setActiveIndex((prev) => findNextImageIndex(media, prev, delta));
-  };
-
   const slideLabel = formatSlideCount(safeIndex, media.length);
-  const kindLabel = activeItem.type === 'video' ? 'Video walkthrough' : 'Screenshot';
+  const kindLabel = activeItem.type === 'video' ? 'Motion demo' : 'Screenshot';
+  const showReducedFallback = activeItem.type === 'video' && prefersReducedMotion;
 
   return (
     <>
@@ -93,45 +100,39 @@ export function ProjectMediaGallery({ media, projectTitle }: ProjectMediaGallery
         aria-label={`${projectTitle} walkthrough and screenshots`}
       >
         <div className="project-media-stage">
-          {activeItem.type === 'video' ? (
-            <>
+          <button
+            type="button"
+            className="project-media-zoom-btn"
+            onClick={() => setIsLightboxOpen(true)}
+            aria-label={`Inspect ${activeItem.label} full screen`}
+          >
+            {activeItem.type === 'video' && !showReducedFallback ? (
               <video
                 key={activeItem.src}
                 className="project-media-video"
-                controls
+                autoPlay
                 muted
                 loop
                 playsInline
-                preload="metadata"
+                preload="auto"
                 poster={activeItem.poster}
                 aria-label={activeItem.alt}
               >
                 <source src={activeItem.src} type="video/webm" />
               </video>
-              <span className="project-media-badge" aria-hidden="true">
-                <Play size={10} />
-                <span>WEBM WALKTHROUGH</span>
-              </span>
-            </>
-          ) : (
-            <button
-              type="button"
-              className="project-media-zoom-btn"
-              onClick={() => setIsLightboxOpen(true)}
-              aria-label={`Inspect ${activeItem.label} full screen`}
-            >
+            ) : (
               <img
-                src={activeItem.src}
+                src={showReducedFallback ? (activeItem.poster ?? activeItem.src) : activeItem.src}
                 alt={activeItem.alt}
                 className="project-media-img"
                 loading="eager"
               />
-              <span className="project-media-zoom-hint" aria-hidden="true">
-                <Expand size={11} />
-                <span>Click to zoom</span>
-              </span>
-            </button>
-          )}
+            )}
+            <span className="project-media-zoom-hint" aria-hidden="true">
+              <Expand size={11} />
+              <span>Expand</span>
+            </span>
+          </button>
         </div>
 
         <figcaption className="project-media-bar">
@@ -199,7 +200,6 @@ export function ProjectMediaGallery({ media, projectTitle }: ProjectMediaGallery
       </figure>
 
       {isLightboxOpen &&
-        activeItem.type === 'image' &&
         typeof document !== 'undefined' &&
         createPortal(
           <div
@@ -212,20 +212,20 @@ export function ProjectMediaGallery({ media, projectTitle }: ProjectMediaGallery
             <div className="media-lightbox-dialog" onClick={(event) => event.stopPropagation()}>
               <div className="media-lightbox-head">
                 <div className="media-lightbox-title-wrap">
-                  <span className="project-media-kind">Screenshot</span>
+                  <span className="project-media-kind">{kindLabel}</span>
                   <span className="media-lightbox-title">
                     {projectTitle} / {activeItem.label}
                   </span>
                 </div>
 
                 <div className="media-lightbox-actions">
-                  {imageCount > 1 && (
+                  {media.length > 1 && (
                     <div className="pager-controls">
                       <button
                         type="button"
                         className="pager-btn"
-                        onClick={() => stepLightboxImage(-1)}
-                        aria-label="Previous screenshot"
+                        onClick={() => stepSlide(-1)}
+                        aria-label="Previous slide in viewer"
                       >
                         &lt;-
                       </button>
@@ -233,8 +233,8 @@ export function ProjectMediaGallery({ media, projectTitle }: ProjectMediaGallery
                       <button
                         type="button"
                         className="pager-btn"
-                        onClick={() => stepLightboxImage(1)}
-                        aria-label="Next screenshot"
+                        onClick={() => stepSlide(1)}
+                        aria-label="Next slide in viewer"
                       >
                         -&gt;
                       </button>
@@ -254,7 +254,23 @@ export function ProjectMediaGallery({ media, projectTitle }: ProjectMediaGallery
               </div>
 
               <div className="media-lightbox-body">
-                <img src={activeItem.src} alt={activeItem.alt} className="media-lightbox-img" />
+                {activeItem.type === 'video' ? (
+                  <video
+                    key={activeItem.src}
+                    className="media-lightbox-video"
+                    controls
+                    autoPlay={!prefersReducedMotion}
+                    muted
+                    loop
+                    playsInline
+                    poster={activeItem.poster}
+                    aria-label={activeItem.alt}
+                  >
+                    <source src={activeItem.src} type="video/webm" />
+                  </video>
+                ) : (
+                  <img src={activeItem.src} alt={activeItem.alt} className="media-lightbox-img" />
+                )}
               </div>
 
               <p className="media-lightbox-caption">{activeItem.caption}</p>
