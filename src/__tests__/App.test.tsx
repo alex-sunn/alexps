@@ -15,6 +15,7 @@ describe('Alex Sun Portfolio App (Overview Landing, Quick-Jump & Deep Links)', (
 
     expect(document.documentElement.dataset.theme).toBe('light');
     expect(document.getElementById('gl-backdrop')).toBeInTheDocument();
+    expect(document.getElementById('click-fx')).toBeInTheDocument();
 
     const photo = screen.getByRole('img', { name: /Alex Sun with his dog in Toronto/i });
     expect(photo).toHaveAttribute('src', '/alex-sun.jpg');

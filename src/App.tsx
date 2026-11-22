@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { AsciiClickBurst } from './canvas/AsciiClickBurst';
 import { AsciiSceneCanvas } from './canvas/AsciiSceneCanvas';
 import { AwardsDetailPane } from './components/AwardsDetailPane';
 import { BrowseIndexRail } from './components/BrowseIndexRail';
@@ -221,6 +222,7 @@ export function App() {
   return (
     <>
       <AsciiSceneCanvas activePreset={activeScenePreset} theme={theme} />
+      <AsciiClickBurst theme={theme} />
 
       <div className="print-only-header">
         <strong>{RESUME_DATA.identity.name}</strong> | {RESUME_DATA.identity.email} ·{' '}

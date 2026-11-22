@@ -29,6 +29,16 @@
   transition: opacity 180ms ease;
 }
 
+.click-fx-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+  pointer-events: none;
+  display: block;
+}
+
 .print-only-header {
   display: none;
 }
@@ -1156,6 +1166,7 @@
 /* Print / Save Resume PDF Stylesheet */
 @media print {
   .ascii-backdrop,
+  .click-fx-canvas,
   .identity,
   .index-pane,
   .theme-toggle,
