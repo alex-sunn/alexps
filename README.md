@@ -22,7 +22,7 @@ npm run dev
 
 ## Editing Content
 
-All copy, proof metrics, work experience, project highlights, awards, and chart benchmarks live in [`src/data/resumeData.ts`](./src/data/resumeData.ts).
+All copy, proof metrics, work experience, project highlights, and awards live in [`src/data/resumeData.ts`](./src/data/resumeData.ts).
 
 Static assets in `public/`:
 - `public/alex-sun.jpg`: Profile portrait

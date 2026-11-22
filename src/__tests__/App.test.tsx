@@ -102,7 +102,7 @@ describe('Alex Sun Portfolio App (Overview Landing, Quick-Jump & Deep Links)', (
     expect(screen.getByText('01 / 02')).toBeInTheDocument();
   });
 
-  it('toggles Dark/Light mode, navigates to 04 Awards with Benchmarks chart toggle, and copies email', async () => {
+  it('toggles Dark/Light mode, navigates to 04 Awards, and copies email', async () => {
     const user = userEvent.setup();
     const writeTextMock = vi.fn().mockResolvedValue(undefined);
     Object.defineProperty(navigator, 'clipboard', {
@@ -121,17 +121,19 @@ describe('Alex Sun Portfolio App (Overview Landing, Quick-Jump & Deep Links)', (
     await user.click(lightBtn);
     expect(document.documentElement.dataset.theme).toBe('light');
 
-    // Navigate to 04 Awards & toggle Benchmarks + Bars controls
+    // Navigate to 04 Awards without timeline/benchmarks chart
     const nav = screen.getByRole('navigation', { name: 'Primary navigation' });
     await user.click(within(nav).getByRole('button', { name: /04.*Awards/i }));
     expect(
-      screen.getByRole('heading', { level: 1, name: /Awards & Trajectory/i }),
+      screen.getByRole('heading', { level: 1, name: /^Awards$/i }),
     ).toBeInTheDocument();
-    await user.click(screen.getByRole('button', { name: 'Benchmarks' }));
-    await user.click(screen.getByRole('button', { name: 'Bars' }));
+    const awardsRegion = screen.getByRole('region', { name: /Accomplishments and honors/i });
     expect(
-      screen.getByLabelText(/Quantified Career Benchmarks interactive impact chart/i),
+      within(awardsRegion).getByText(/TRSM Top 10% & TMU Academic Achievement Scholarship/i),
     ).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Benchmarks' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Trajectory' })).not.toBeInTheDocument();
+    expect(document.querySelector('canvas.tcv')).toBeNull();
 
     // Email copy chip
     await user.click(screen.getByRole('button', { name: /Copy email alex\.sun@torontomu\.ca/i }));

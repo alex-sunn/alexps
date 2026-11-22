@@ -289,11 +289,7 @@ export function App() {
           )}
 
           {activeSection === 'awards' && (
-            <AwardsDetailPane
-              accomplishments={RESUME_DATA.accomplishments}
-              chartSeries={RESUME_DATA.chartSeries}
-              theme={theme}
-            />
+            <AwardsDetailPane accomplishments={RESUME_DATA.accomplishments} />
           )}
         </main>
       </div>

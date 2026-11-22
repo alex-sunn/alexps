@@ -1,7 +1,5 @@
 import { describe, expect, it } from 'vitest';
 import { ASCII_RAMP, mapPixelToAsciiCell } from '../canvas/asciiMapper';
-import { computeChartGeometry } from '../components/InteractiveChart';
-import { RESUME_DATA } from '../data/resumeData';
 
 describe('asciiMapper (Ultra-Ethereal Light & Subtle Dark Backdrops)', () => {
   it('returns blank space for near-zero luminance', () => {
@@ -31,19 +29,5 @@ describe('asciiMapper (Ultra-Ethereal Light & Subtle Dark Backdrops)', () => {
     const complete = mapPixelToAsciiCell(0.8, 1, 1, 0.9, 'light');
     expect(early.char).toBe(' ');
     expect(complete.char).not.toBe(' ');
-  });
-});
-
-describe('computeChartGeometry', () => {
-  it('computes bounded coordinates for every point in timeline series', () => {
-    const points = RESUME_DATA.chartSeries.timeline.points;
-    const geom = computeChartGeometry(points, 560, 170);
-    expect(geom.coords).toHaveLength(points.length);
-    for (const coord of geom.coords) {
-      expect(coord.x).toBeGreaterThan(0);
-      expect(coord.x).toBeLessThan(560);
-      expect(coord.y).toBeGreaterThanOrEqual(geom.padTop);
-      expect(coord.y).toBeLessThanOrEqual(geom.padTop + geom.plotH);
-    }
   });
 });

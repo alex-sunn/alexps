@@ -1,47 +1,22 @@
-import { useState } from 'react';
-import { InteractiveChart } from './InteractiveChart';
-import type {
-  AccomplishmentItem,
-  ChartRenderMode,
-  ChartSeries,
-  ChartSeriesKey,
-  ThemeMode,
-} from '../types/portfolio';
+import type { AccomplishmentItem } from '../types/portfolio';
 
 interface AwardsDetailPaneProps {
   accomplishments: readonly AccomplishmentItem[];
-  chartSeries: Record<ChartSeriesKey, ChartSeries>;
-  theme: ThemeMode;
 }
 
-export function AwardsDetailPane({
-  accomplishments,
-  chartSeries,
-  theme,
-}: AwardsDetailPaneProps) {
-  const [seriesKey, setSeriesKey] = useState<ChartSeriesKey>('timeline');
-  const [chartMode, setChartMode] = useState<ChartRenderMode>('line');
-
+export function AwardsDetailPane({ accomplishments }: AwardsDetailPaneProps) {
   return (
     <article className="detail-pane" aria-labelledby="awards-heading">
       <div className="breadcrumb">
-        <span>Awards &amp; Trajectory</span>
+        <span>Awards</span>
       </div>
 
       <h1 id="awards-heading" className="detail-title">
-        Awards &amp; Trajectory
+        Awards
       </h1>
       <p className="detail-lead">
-        Academic honors, speaking contests, case competitions, and key milestones from the past few years.
+        Academic honors, speaking contests, case competitions, and competitive achievements.
       </p>
-
-      <InteractiveChart
-        series={chartSeries[seriesKey]}
-        mode={chartMode}
-        theme={theme}
-        onSelectSeries={setSeriesKey}
-        onSelectMode={setChartMode}
-      />
 
       <section className="awards-list" aria-label="Accomplishments and honors">
         {accomplishments.map((item) => (

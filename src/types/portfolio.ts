@@ -15,10 +15,6 @@ export type ProjectCategory =
 
 export type ProjectSortMode = 'type' | 'featured';
 
-export type ChartSeriesKey = 'timeline' | 'benchmarks';
-
-export type ChartRenderMode = 'line' | 'bars';
-
 export interface NavItem {
   id: NavSectionId;
   code: string;
@@ -133,20 +129,6 @@ export interface AccomplishmentItem {
   description: string;
 }
 
-export interface ChartDataPoint {
-  label: string;
-  value: number;
-  displayValue: string;
-  milestone: string;
-  detail: string;
-}
-
-export interface ChartSeries {
-  key: ChartSeriesKey;
-  label: string;
-  points: readonly ChartDataPoint[];
-}
-
 export interface PortfolioData {
   identity: ProfileIdentity;
   navItems: readonly NavItem[];
@@ -157,5 +139,4 @@ export interface PortfolioData {
   skillGroups: readonly SkillGroup[];
   accomplishments: readonly AccomplishmentItem[];
   interests: readonly string[];
-  chartSeries: Record<ChartSeriesKey, ChartSeries>;
 }

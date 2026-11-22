@@ -25,11 +25,6 @@ describe('RESUME_DATA curated integrity', () => {
     ]);
     expect(RESUME_DATA.projects.some((p) => p.slug === 'dcf-terminal')).toBe(false);
     expect(RESUME_DATA.projects.some((p) => p.slug === 'wholesaling-radar')).toBe(false);
-    expect(
-      RESUME_DATA.chartSeries.timeline.points.some(
-        (pt) => pt.milestone === 'Financial Terminal',
-      ),
-    ).toBe(false);
 
     const seenIds = new Set<string>();
 
@@ -63,11 +58,9 @@ describe('RESUME_DATA curated integrity', () => {
     }
   });
 
-  it('includes 3 internships, TMU education, 5 awards, and non-arbitrary benchmark chart series', () => {
+  it('includes 3 internships, TMU education, and 5 awards', () => {
     expect(RESUME_DATA.experience).toHaveLength(3);
     expect(RESUME_DATA.education.institution).toBe('Toronto Metropolitan University');
     expect(RESUME_DATA.accomplishments).toHaveLength(5);
-    expect(RESUME_DATA.chartSeries.timeline.points.length).toBeGreaterThanOrEqual(5);
-    expect(RESUME_DATA.chartSeries.benchmarks.points).toHaveLength(6);
   });
 });
