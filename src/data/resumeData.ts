@@ -85,8 +85,8 @@ export const RESUME_DATA: PortfolioData = {
           src: '/media/pixel-agents/walkthrough.webm',
           poster: '/media/pixel-agents/walkthrough-poster.png',
           label: 'Motion Demo',
-          caption: 'Step-by-step guided walkthrough of the Pixel Agents War Room debate generating a BUY CEG thesis, pushing it to Ideas, and syncing into Portfolio.',
-          alt: 'Guided walkthrough of Pixel Agents orchestrating an investment committee debate, Ideas push, and Portfolio sync',
+          caption: 'Guided example walkthrough: agents debate a BUY CEG thesis in the War Room, push it to the Ideas feed, and sync it into Portfolio.',
+          alt: 'Guided example walkthrough showing Pixel Agents debating CEG, publishing to the Ideas feed, and syncing to Portfolio',
         },
         {
           id: 'pixel-office',
@@ -164,8 +164,8 @@ export const RESUME_DATA: PortfolioData = {
           src: '/media/dealflow-ai/walkthrough.webm',
           poster: '/media/dealflow-ai/walkthrough-poster.png',
           label: 'Motion Demo',
-          caption: 'Step-by-step guided walkthrough of an inbound inquiry captured, AI-scored as a Hot 95/100 lead, summarized in the CRM, and tracked across Kanban and Analytics.',
-          alt: 'Guided walkthrough of DealFlow AI capturing an inbound lead, scoring it in the CRM, and updating Kanban and Analytics',
+          caption: 'Guided example walkthrough: an inbound lease inquiry is parsed by AI, scored 95/100, advanced on the Kanban board, and tracked in Analytics.',
+          alt: 'Guided example walkthrough showing DealFlow AI parsing an inbound lease lead, scoring 95/100, advancing Kanban stages, and tracking Analytics',
         },
         {
           id: 'dealflow-dashboard',
