@@ -34,11 +34,17 @@ describe('RESUME_DATA curated integrity', () => {
       expect(project.howItWorks.length).toBeGreaterThanOrEqual(3);
       expect(project.stack.length).toBeGreaterThanOrEqual(5);
 
-      expect(project.media.length).toBeGreaterThanOrEqual(3);
+      const videoOnlySlugs = new Set(['dcf-terminal', 'wholesaling-radar']);
       const videos = project.media.filter((m) => m.type === 'video');
       const images = project.media.filter((m) => m.type === 'image');
       expect(videos.length).toBeGreaterThanOrEqual(1);
-      expect(images.length).toBeGreaterThanOrEqual(2);
+      if (videoOnlySlugs.has(project.slug)) {
+        expect(project.media).toHaveLength(1);
+        expect(images).toHaveLength(0);
+      } else {
+        expect(project.media.length).toBeGreaterThanOrEqual(3);
+        expect(images.length).toBeGreaterThanOrEqual(2);
+      }
       expect(videos[0].src.endsWith('.webm')).toBe(true);
       expect(videos[0].poster?.endsWith('.png')).toBe(true);
 

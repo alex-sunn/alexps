@@ -98,12 +98,35 @@ describe('Alex Sun Portfolio App (Overview Landing, Quick-Jump & Deep Links)', (
     await user.keyboard('{Escape}');
     expect(screen.queryByRole('dialog', { name: /DealFlow AI media viewer/i })).not.toBeInTheDocument();
 
-    // Pager advances cleanly to Financial Terminal & DCF Suite
+    // Pager advances cleanly to Financial Terminal & DCF Suite (Motion Demo only)
     await user.click(screen.getByRole('button', { name: /Next project/i }));
     expect(
       screen.getByRole('heading', { level: 1, name: /Financial Terminal & DCF Suite/i }),
     ).toBeInTheDocument();
     expect(screen.getByText('03 / 04')).toBeInTheDocument();
+    const dcfGallery = screen.getByRole('figure', {
+      name: /Financial Terminal & DCF Suite motion demo/i,
+    });
+    expect(dcfGallery.querySelector('video')).toBeInTheDocument();
+    expect(dcfGallery.querySelector('video')).not.toHaveAttribute('controls');
+    expect(screen.queryByRole('list', { name: /Media slides/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Previous media/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Next media/i })).not.toBeInTheDocument();
+
+    // Pager advances cleanly to Wholesaling Automation Radar (Motion Demo only)
+    await user.click(screen.getByRole('button', { name: /Next project/i }));
+    expect(
+      screen.getByRole('heading', { level: 1, name: /Wholesaling Automation Radar/i }),
+    ).toBeInTheDocument();
+    expect(screen.getByText('04 / 04')).toBeInTheDocument();
+    const wholesalingGallery = screen.getByRole('figure', {
+      name: /Wholesaling Automation Radar motion demo/i,
+    });
+    expect(wholesalingGallery.querySelector('video')).toBeInTheDocument();
+    expect(wholesalingGallery.querySelector('video')).not.toHaveAttribute('controls');
+    expect(screen.queryByRole('list', { name: /Media slides/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Previous media/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Next media/i })).not.toBeInTheDocument();
   });
 
   it('toggles Dark/Light mode, navigates to 04 Awards, and copies email', async () => {

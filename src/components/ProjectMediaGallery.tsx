@@ -92,12 +92,15 @@ export function ProjectMediaGallery({ media, projectTitle }: ProjectMediaGallery
   const slideLabel = formatSlideCount(safeIndex, media.length);
   const kindLabel = activeItem.type === 'video' ? 'Motion demo' : 'Screenshot';
   const showReducedFallback = activeItem.type === 'video' && prefersReducedMotion;
+  const hasImages = media.some((item) => item.type === 'image');
 
   return (
     <>
       <figure
         className="project-gallery"
-        aria-label={`${projectTitle} walkthrough and screenshots`}
+        aria-label={
+          hasImages ? `${projectTitle} walkthrough and screenshots` : `${projectTitle} motion demo`
+        }
       >
         <div className="project-media-stage">
           <button
