@@ -85,8 +85,8 @@ export const RESUME_DATA: PortfolioData = {
           src: '/media/pixel-agents/walkthrough.webm',
           poster: '/media/pixel-agents/walkthrough-poster.png',
           label: 'Motion Demo',
-          caption: 'From prompt dispatch to RAG investigation, risk audit sizing, and one-click MD Gate execution.',
-          alt: 'Motion walkthrough of Pixel Agents orchestrating multi-desk research and trade execution',
+          caption: 'Live walkthrough of the Pixel Agents War Room debate generating a BUY CEG thesis, pushing it to Ideas, and syncing the allocation into Portfolio.',
+          alt: 'Motion walkthrough of Pixel Agents orchestrating an investment committee debate, Ideas push, and Portfolio sync',
         },
         {
           id: 'pixel-office',
@@ -164,8 +164,8 @@ export const RESUME_DATA: PortfolioData = {
           src: '/media/dealflow-ai/walkthrough.webm',
           poster: '/media/dealflow-ai/walkthrough-poster.png',
           label: 'Motion Demo',
-          caption: 'Inbound inquiry parsed into typed deal JSON, scored 94/100, advanced across Kanban stages, and booked onto Calendar.',
-          alt: 'Motion walkthrough of DealFlow AI lead extraction, Kanban progression, and tour scheduling',
+          caption: 'Live walkthrough of an inbound inquiry captured, AI-scored as a Hot 95/100 lead, summarized in the CRM, and tracked across Kanban and Analytics.',
+          alt: 'Motion walkthrough of DealFlow AI capturing an inbound lead, scoring it in the CRM, and updating Kanban and Analytics',
         },
         {
           id: 'dealflow-dashboard',
