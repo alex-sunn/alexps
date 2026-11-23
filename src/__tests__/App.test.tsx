@@ -38,7 +38,7 @@ describe('Alex Sun Portfolio App (Overview Landing, Quick-Jump & Deep Links)', (
 
     const directory = screen.getByRole('region', { name: /Quick navigation directory/i });
     expect(within(directory).getByText(/Recent Experience \(3\)/i)).toBeInTheDocument();
-    expect(within(directory).getByText(/Flagship Projects \(2\)/i)).toBeInTheDocument();
+    expect(within(directory).getByText(/Flagship Projects \(4\)/i)).toBeInTheDocument();
   });
 
   it('supports instant 1-click jumps from Overview to Experience and Private Projects with walkthrough request', async () => {
@@ -64,7 +64,7 @@ describe('Alex Sun Portfolio App (Overview Landing, Quick-Jump & Deep Links)', (
       screen.getByRole('heading', { level: 1, name: /^DealFlow AI$/i }),
     ).toBeInTheDocument();
     expect(window.location.hash).toBe('#projects/dealflow-ai');
-    expect(screen.getByText('02 / 02')).toBeInTheDocument();
+    expect(screen.getByText('02 / 04')).toBeInTheDocument();
     expect(screen.getByText(/Private Repository/i)).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /Request Walkthrough/i })).toHaveAttribute(
       'href',
@@ -74,12 +74,12 @@ describe('Alex Sun Portfolio App (Overview Landing, Quick-Jump & Deep Links)', (
 
     const browseProjectsRail = screen.getByRole('complementary', { name: /Browse projects/i });
     expect(
-      within(browseProjectsRail).queryByText(/Wholesaling Automation Radar/i),
-    ).not.toBeInTheDocument();
+      within(browseProjectsRail).getByText(/Wholesaling Automation Radar/i),
+    ).toBeInTheDocument();
     expect(
-      within(browseProjectsRail).queryByText(/Financial Terminal & DCF Suite/i),
-    ).not.toBeInTheDocument();
-    expect(within(browseProjectsRail).queryByText(/Finance & Quant/i)).not.toBeInTheDocument();
+      within(browseProjectsRail).getByText(/Financial Terminal & DCF Suite/i),
+    ).toBeInTheDocument();
+    expect(within(browseProjectsRail).getByText(/Finance & Quant/i)).toBeInTheDocument();
 
     // Project media gallery starts with seamless looping inline video, expands to lightbox with controls, and cycles with arrows
     const gallery = screen.getByRole('figure', { name: /DealFlow AI walkthrough and screenshots/i });
@@ -98,12 +98,12 @@ describe('Alex Sun Portfolio App (Overview Landing, Quick-Jump & Deep Links)', (
     await user.keyboard('{Escape}');
     expect(screen.queryByRole('dialog', { name: /DealFlow AI media viewer/i })).not.toBeInTheDocument();
 
-    // Pager wraps cleanly back to AI Portfolio Management (Pixel Agents)
+    // Pager advances cleanly to Financial Terminal & DCF Suite
     await user.click(screen.getByRole('button', { name: /Next project/i }));
     expect(
-      screen.getByRole('heading', { level: 1, name: /AI Portfolio Management \(Pixel Agents\)/i }),
+      screen.getByRole('heading', { level: 1, name: /Financial Terminal & DCF Suite/i }),
     ).toBeInTheDocument();
-    expect(screen.getByText('01 / 02')).toBeInTheDocument();
+    expect(screen.getByText('03 / 04')).toBeInTheDocument();
   });
 
   it('toggles Dark/Light mode, navigates to 04 Awards, and copies email', async () => {

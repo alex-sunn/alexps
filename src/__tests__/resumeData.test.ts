@@ -17,14 +17,14 @@ describe('RESUME_DATA curated integrity', () => {
     expect(RESUME_DATA.proofStats).toHaveLength(4);
   });
 
-  it('includes the 2 active curated projects with structured walkthrough media and excludes paused ones', () => {
-    expect(RESUME_DATA.projects).toHaveLength(2);
+  it('includes the 4 curated projects with structured walkthrough media', () => {
+    expect(RESUME_DATA.projects).toHaveLength(4);
     expect(RESUME_DATA.projects.map((p) => p.slug)).toEqual([
       'pixel-agents',
       'dealflow-ai',
+      'dcf-terminal',
+      'wholesaling-radar',
     ]);
-    expect(RESUME_DATA.projects.some((p) => p.slug === 'dcf-terminal')).toBe(false);
-    expect(RESUME_DATA.projects.some((p) => p.slug === 'wholesaling-radar')).toBe(false);
 
     const seenIds = new Set<string>();
 
